@@ -13,6 +13,8 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -259,5 +261,28 @@ public class MapActivity extends AppCompatActivity implements
             }
         }
         return false;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.setting,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menu_news:
+                // Red item was selected
+                return true;
+            case R.id.menu_share:
+                // Green item was selected
+                return true;
+            case R.id.menu_weather:
+                // Red item was selected
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }

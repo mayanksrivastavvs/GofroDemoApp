@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">GoFroDemoApp</string>
     <string name="open_weather_maps_app_id">8c9d7459a7037a2702b21e83d40689d0</string>
+    <string name="weather_menu">Weather</string>
+    <string name="news_menu">News</string>
+    <string name="itinerary_menu">Share itinerary</string>
 </resources>
