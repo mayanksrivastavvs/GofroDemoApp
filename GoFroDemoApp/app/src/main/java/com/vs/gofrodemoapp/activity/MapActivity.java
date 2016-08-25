@@ -84,6 +84,10 @@ public class MapActivity extends AppCompatActivity implements
 
     }
 
+    public Location getLastLocation() {
+        return mLastLocation;
+    }
+
     protected void loadMap(GoogleMap googleMap) {
         mMap = googleMap;
         if (mMap != null) {
@@ -290,7 +294,10 @@ public class MapActivity extends AppCompatActivity implements
                 // Green item was selected
                 return true;
             case R.id.menu_weather:
-                // Red item was selected
+                Intent intent = new Intent(MapActivity.this,WeatherActivity.class);
+                intent.putExtra("lat",String.valueOf(getLastLocation().getLatitude()));
+                intent.putExtra("lon",String.valueOf(getLastLocation().getLongitude()));
+                startActivity(intent);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

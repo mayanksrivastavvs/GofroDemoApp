@@ -22,11 +22,15 @@ public class WeatherActivity extends AppCompatActivity {
     private TextView hum;
     private TextView press;
     private TextView windSpeed;
+    private String lat;
+    private String lon;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_weather);
+        lat = getIntent().getStringExtra("lat");
+        lon = getIntent().getStringExtra("lon");
 
         cityText = (TextView) findViewById(R.id.cityText);
         condDescr = (TextView) findViewById(R.id.condDescr);
@@ -39,7 +43,7 @@ public class WeatherActivity extends AppCompatActivity {
         final Handler handler = new Handler();
         new Thread() {
             public void run() {
-                final String json = FetchWeatherDetail.getJSON(WeatherActivity.this, "28.582411", "77.321090");
+                final String json = FetchWeatherDetail.getJSON(WeatherActivity.this, lat,lon);
                 if (json == null) {
                     handler.post(new Runnable() {
                         public void run() {
@@ -64,7 +68,7 @@ public class WeatherActivity extends AppCompatActivity {
 
     private void renderWeatherData(WeatherResponse weatherResponse) {
         double tempLong = Math.round(Double.parseDouble(weatherResponse.getMain().getTemp()) - 273.15);
-        String temp = String.valueOf(tempLong) +" "+ "\u2103";
+        String temp = String.valueOf(tempLong);
         String humidity = weatherResponse.getMain().getHumidity() + "%";
         String pressure = weatherResponse.getMain().getPressure() + " hPa";
         String city = weatherResponse.getName() + "," + weatherResponse.getSys().getCountry();
