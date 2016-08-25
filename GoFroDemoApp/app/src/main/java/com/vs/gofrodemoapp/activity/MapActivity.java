@@ -294,10 +294,10 @@ public class MapActivity extends AppCompatActivity implements
                 // Green item was selected
                 return true;
             case R.id.menu_weather:
-                Intent intent = new Intent(MapActivity.this,WeatherActivity.class);
-                intent.putExtra("lat",String.valueOf(getLastLocation().getLatitude()));
-                intent.putExtra("lon",String.valueOf(getLastLocation().getLongitude()));
-                startActivity(intent);
+                Intent intentWeather = new Intent(MapActivity.this,WeatherActivity.class);
+                intentWeather.putExtra("lat",String.valueOf(getLastLocation().getLatitude()));
+                intentWeather.putExtra("lon",String.valueOf(getLastLocation().getLongitude()));
+                startActivity(intentWeather);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
