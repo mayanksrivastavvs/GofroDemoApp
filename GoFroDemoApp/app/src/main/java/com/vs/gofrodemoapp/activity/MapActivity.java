@@ -1,12 +1,14 @@
 package com.vs.gofrodemoapp.activity;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
@@ -31,9 +33,14 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.vs.gofrodemoapp.AppUtility;
 import com.vs.gofrodemoapp.R;
+import com.vs.gofrodemoapp.model.ResponseData;
+import com.vs.gofrodemoapp.model.ResponseMain;
 
 import java.io.IOException;
+import java.io.Serializable;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 
@@ -265,7 +272,7 @@ public class MapActivity extends AppCompatActivity implements
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.setting,menu);
+        getMenuInflater().inflate(R.menu.setting, menu);
         return true;
     }
 
@@ -273,7 +280,11 @@ public class MapActivity extends AppCompatActivity implements
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu_news:
-                // Red item was selected
+                ResponseMain responseMain = AppUtility.getGsonInstance().fromJson(AppUtility.loadJSONFromAsset(this, "news.json"), ResponseMain.class);
+                Intent intent = new Intent(this, NewsActivity.class);
+                intent.putExtra("feed", (Serializable) Arrays.asList(responseMain.getResponseData().getFeed()));
+                startActivity(intent);
+
                 return true;
             case R.id.menu_share:
                 // Green item was selected
