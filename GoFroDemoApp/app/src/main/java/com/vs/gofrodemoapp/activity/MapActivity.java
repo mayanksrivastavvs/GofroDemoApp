@@ -1,4 +1,4 @@
-package com.vs.gofrodemoapp;
+package com.vs.gofrodemoapp.activity;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
@@ -29,6 +29,7 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.vs.gofrodemoapp.R;
 
 import java.io.IOException;
 import java.util.List;
