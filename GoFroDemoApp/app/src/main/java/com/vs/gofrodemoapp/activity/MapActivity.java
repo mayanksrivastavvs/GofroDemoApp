@@ -8,7 +8,6 @@ import android.location.Geocoder;
 import android.location.Location;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
@@ -35,7 +34,6 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.vs.gofrodemoapp.AppUtility;
 import com.vs.gofrodemoapp.R;
-import com.vs.gofrodemoapp.model.ResponseData;
 import com.vs.gofrodemoapp.model.ResponseMain;
 
 import java.io.IOException;
@@ -294,9 +292,20 @@ public class MapActivity extends AppCompatActivity implements
                 // Green item was selected
                 return true;
             case R.id.menu_weather:
-                Intent intentWeather = new Intent(MapActivity.this,WeatherActivity.class);
-                intentWeather.putExtra("lat",String.valueOf(getLastLocation().getLatitude()));
-                intentWeather.putExtra("lon",String.valueOf(getLastLocation().getLongitude()));
+                String lat;
+                String lon;
+                if (getLastLocation() != null) {
+                    lat = String.valueOf(getLastLocation().getLatitude());
+                    lon = String.valueOf(getLastLocation().getLongitude());
+                }
+                else {
+                    lat = "28";
+                    lon = "77";
+                }
+
+                Intent intentWeather = new Intent(MapActivity.this, WeatherActivity.class);
+                intentWeather.putExtra("lat", lat);
+                intentWeather.putExtra("lon", lon);
                 startActivity(intentWeather);
                 return true;
             default:

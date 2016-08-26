@@ -6,15 +6,31 @@ package com.vs.gofrodemoapp.model;
 
 public class Main
 {
+    private String temp_kf;
+
     private String humidity;
 
     private String pressure;
 
     private String temp_max;
 
+    private String sea_level;
+
     private String temp_min;
 
     private String temp;
+
+    private String grnd_level;
+
+    public String getTemp_kf ()
+    {
+        return temp_kf;
+    }
+
+    public void setTemp_kf (String temp_kf)
+    {
+        this.temp_kf = temp_kf;
+    }
 
     public String getHumidity ()
     {
@@ -46,6 +62,16 @@ public class Main
         this.temp_max = temp_max;
     }
 
+    public String getSea_level ()
+    {
+        return sea_level;
+    }
+
+    public void setSea_level (String sea_level)
+    {
+        this.sea_level = sea_level;
+    }
+
     public String getTemp_min ()
     {
         return temp_min;
@@ -66,9 +92,21 @@ public class Main
         this.temp = temp;
     }
 
+    public String getGrnd_level ()
+    {
+        return grnd_level;
+    }
+
+    public void setGrnd_level (String grnd_level)
+    {
+        this.grnd_level = grnd_level;
+    }
+
     @Override
     public String toString()
     {
-        return "ClassPojo [humidity = "+humidity+", pressure = "+pressure+", temp_max = "+temp_max+", temp_min = "+temp_min+", temp = "+temp+"]";
+        return "ClassPojo [temp_kf = "+temp_kf+", humidity = "+humidity+", pressure = "+pressure+", temp_max = "+temp_max+", sea_level = "+sea_level+", temp_min = "+temp_min+", temp = "+temp+", grnd_level = "+grnd_level+"]";
     }
 }
+
+

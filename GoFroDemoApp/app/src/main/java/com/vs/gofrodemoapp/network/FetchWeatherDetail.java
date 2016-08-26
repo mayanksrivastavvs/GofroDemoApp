@@ -20,10 +20,12 @@ import java.net.URL;
 public class FetchWeatherDetail {
     private static final String OPEN_WEATHER_MAP_API =
             "http://api.openweathermap.org/data/2.5/weather?lat=%s&lon=%s";
+    private static final String OPEN_WEATHER_FORECAST_API =
+            "http://api.openweathermap.org/data/2.5/forecast?lat=%s&lon=%s";
 
     public static String getJSON(Context context, String lat,String lon){
         try {
-            URL url = new URL(String.format(OPEN_WEATHER_MAP_API, lat,lon));
+            URL url = new URL(String.format(OPEN_WEATHER_FORECAST_API, lat,lon));
             HttpURLConnection connection = (HttpURLConnection)url.openConnection();
 
             connection.addRequestProperty("x-api-key", context.getString(R.string.open_weather_maps_app_id));
